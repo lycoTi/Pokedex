@@ -230,7 +230,11 @@
    justify-content: space-between;
    transform: translate(50%, -50%);
    box-shadow: 0rem 0.2rem 2rem #00000010;
-   background-color: #77c850;
+   background-image: radial-gradient(
+      farthest-corner at 50% 33%,
+      #77c850 10%,
+      #345c22 90% 100%
+   );
 }
 
 .modal-header {
@@ -250,7 +254,7 @@
    gap: 0.2rem;
 }
 .modal-header div ul li {
-   filter: brightness(1.1);
+   filter: brightness(1);
    border-radius: 1rem;
    font-size: 0.7rem;
    font-weight: 300;
@@ -258,6 +262,7 @@
    padding: 0.1rem 0.3rem;
    color: #fff;
    background-color: #77c850;
+   box-shadow: 0.05rem 0.05rem 0.1rem #00000011;
 }
 .modal-header div h1 {
    margin: 0;
@@ -269,12 +274,12 @@
 }
 .photo-poke {
    position: absolute;
-   top: 4.2rem;
+   top: 19%;
    display: flex;
    justify-content: center;
 }
 .pokemon-modal img {
-   width: 50%;
+   width: 60%;
 }
 .header-body {
    display: flex;
@@ -287,40 +292,42 @@
    font-size: 0.6rem;
 }
 .stats {
-   padding: 1rem 0;
    height: 55%;
    background-color: #ffffff;
    border-radius: 0 0 1rem 1rem;
    display: grid;
-   grid-template-rows: 1fr 1fr;
+   grid-template-rows: 15% 1fr;
+   border-radius: 1rem;
 }
 .modal-nav {
    display: flex;
    font-size: 0.4rem;
    justify-content: space-around;
-   padding-top: 0.2rem;
+   align-items: flex-end;
 }
 .modal-nav span {
    opacity: 0.3;
    flex: 1;
    border-bottom: 1px solid #00000066;
    text-align: center;
+   padding-bottom: 0.1rem;
 }
 .modal-nav span:nth-child(1) {
    opacity: 1;
-   padding-bottom: 0.4rem;
    border-bottom: 1px solid #000000;
 }
 .detalhes-pokemon {
    display: grid;
    grid-template-columns: 1fr;
-   grid-template-rows: auto;
-   row-gap: 0.75rem;
-   padding: 0.3rem;
+   grid-template-rows: min-content min-content min-content;
+   row-gap: 0.1rem;
+   padding: 0.3rem 0.5rem;
+   align-content: space-evenly;
 }
 .detalhes-status {
    display: grid;
    grid-template-columns: auto auto;
+   grid-template-rows: max-content;
    font-size: 0.4rem;
 }
 .detalhe-status-itens {

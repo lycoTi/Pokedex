@@ -1,12 +1,11 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
-
-loadPokemonItens(offset, limit)
-
+const pokemonModal = document.getElementById('pokemon-modal')
 
 const maxRecords = 151
-const limit = 10
+const limit = 2
 let offset = 0;
+loadPokemonItens(offset, limit)
 
 function convertPokemonToLi(pokemon) {
     return `
@@ -26,9 +25,64 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
-function modalPokemon() {
+function modalPokemon(pokemon) {
    return `
-   
+      <div class="pokemon-modal">
+         <div class="modal-header">
+            <div class="header-body">
+               <h1>Bulbasaur</h1>
+               <ul>
+                  <li>Grass</li>
+                  <li>Poison</li>
+               </ul>
+            </div>
+            <div class="header-body-number">#${pokemon.number}</div>
+         </div>
+         <div class="photo-poke">
+            <img
+               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+               alt=""
+            />
+         </div>
+         <div class="stats">
+            <nav class="modal-nav">
+               <span>About</span>
+               <span>Base Stats</span>
+               <span>Evolution</span>
+               <span>Moves</span>
+            </nav>
+            <div class="detalhes-pokemon">
+               <section class="detalhes-status">
+                  <div class="detalhe-status-itens">
+                     <span>Species</span>
+                     <span>Height</span>
+                     <span>Weight</span>
+                     <span>Abilities</span>
+                  </div>
+                  <div class="detalhe-status-itens">
+                     <span>seed</span>
+                     <span>2'3,6"(0,70 cm)</span>
+                     <span>15.2 lbs (6.9 kg)</span>
+                     <span>Overgrow, Chlorophyl</span>
+                  </div>
+               </section>
+               <span>Breading</span>
+               <section class="detalhes-status">
+                  <div class="detalhe-status-itens">
+                     <span>Gender</span>
+                     <span>Egg Groups</span>
+                     <span>Egg Cycle</span>
+                  </div>
+                  <div class="detalhe-status-itens">
+                     <span>M 87.5% F 12.5%</span>
+                     <span>Monster</span>
+                     <span>Grass</span>
+                  </div>
+               </section>
+            </div>
+         </div>
+      </div>
+      <div class="pokemon-modal-background"></div>
    `
 }
 
@@ -39,18 +93,19 @@ function loadPokemonItens(offset, limit) {
       
       const pokemon = document.getElementsByClassName('pokemon')
 
-      for (let i = 0; i < pokemon.length; i++) {
-         const poke = pokemon[i];
-         console.log(poke)
-
-         poke.addEventListener('click', () => {
-         console.log('passei aqui')
-         })
-      }
+      pokeApi.getPokemons().then(() => {
+         // const htmlModal = pokemons.map(modalPokemon).join('')
+         for (let i = 0; i < pokemon.length; i++) {
+            const poke = pokemon[i];
+            poke.addEventListener('click', () => {
+               pokemonModal.innerHTML += modalPokemon
+               console.log(poke)
+            })
+         }
+      })
+      
    })
 }
-
-loadPokemonItens(offset, limit)
 
 loadMoreButton.addEventListener('click', () => {
     offset += limit
