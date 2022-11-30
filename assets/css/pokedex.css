@@ -230,7 +230,11 @@
    justify-content: space-between;
    transform: translate(50%, -50%);
    box-shadow: 0rem 0.2rem 2rem #00000010;
-   background-color: #77c850;
+   background-image: radial-gradient(
+      farthest-corner at 40% 90%,
+      #8ae95e 10%,
+      #4b8332 90%
+   );
 }
 
 .modal-header {
@@ -320,7 +324,7 @@
 }
 .detalhes-status {
    display: grid;
-   grid-template-columns: auto auto;
+   grid-template-columns: auto 60%;
    font-size: 0.4rem;
 }
 .detalhe-status-itens {
