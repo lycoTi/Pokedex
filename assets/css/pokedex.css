@@ -231,9 +231,9 @@
    transform: translate(50%, -50%);
    box-shadow: 0rem 0.2rem 2rem #00000010;
    background-image: radial-gradient(
-      farthest-corner at 50% 33%,
-      #77c850 10%,
-      #345c22 90% 100%
+      farthest-corner at 40% 90%,
+      #8ae95e 10%,
+      #4b8332 90%
    );
 }
 

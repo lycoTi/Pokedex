@@ -1,10 +1,12 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
-const pokemonModal = document.getElementById('pokemon-modal')
+const pokemonDiv = document.getElementById('modal-pokemon')
 
 const maxRecords = 151
 const limit = 2
 let offset = 0;
+loadPokemonItens(offset, limit)
+
 loadPokemonItens(offset, limit)
 
 function convertPokemonToLi(pokemon) {
@@ -90,20 +92,19 @@ function loadPokemonItens(offset, limit) {
    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
       const newHtml = pokemons.map(convertPokemonToLi).join('')
       pokemonList.innerHTML += newHtml
-      
-      const pokemon = document.getElementsByClassName('pokemon')
-
-      pokeApi.getPokemons().then(() => {
-         // const htmlModal = pokemons.map(modalPokemon).join('')
-         for (let i = 0; i < pokemon.length; i++) {
-            const poke = pokemon[i];
-            poke.addEventListener('click', () => {
-               pokemonModal.innerHTML += modalPokemon
-               console.log(poke)
+      const pokemonClass = document.getElementsByClassName('pokemon')
+      for (const pokemon of pokemons) {
+         for (let i = 0; i < pokemonClass.length; i++) {
+            const htmlpoke = pokemonClass[i];
+            htmlpoke.addEventListener('click', () => {
+               pokemonDiv.innerHTML += modalPokemon(pokemon)
             })
          }
-      })
-      
+         if(pokemon) {
+            pokemonNumber = pokemon
+            return pokemon
+         }
+      }      
    })
 }
 
